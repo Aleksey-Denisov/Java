@@ -9,7 +9,7 @@ public class SuperVisor extends Employee{
     }
     public static void promotion(ArrayList<Employee> employees, int salary){
         for(Employee employee : employees){
-            if(!employee.getClass().getSimpleName().equals("SuperVisor"))
+            if(!(employee instanceof SuperVisor))
                 employee.setSalary(employee.getSalary() + salary);
         }
     }
