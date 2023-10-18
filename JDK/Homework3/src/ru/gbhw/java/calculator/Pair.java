@@ -18,6 +18,6 @@ public class Pair <K, V>{
 
     @Override
     public String toString(){
-        return "Pair: " + first + " and " + second;
+        return "Pair: " + first.toString() + " and " + second.toString();
     }
 }
