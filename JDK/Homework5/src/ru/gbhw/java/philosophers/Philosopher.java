@@ -17,13 +17,12 @@ public class Philosopher extends Thread {
     public void run() {
         try{
             while(countEat < maxEat) {
-                if(!getNeighbours(-1) && !getNeighbours(1) && !justEat){
+                if(!getNeighbours()){
                     countEat++;
-                    setEat(true);
                     System.out.println(name + " взял правую и взял левую вилки");
                     System.out.println(name + " начал трапезу");
                     sleep(timeEat);
-                    setEat(false);
+                    setEat();
                     System.out.println(name + " положил обе вилки");
                     justEating(true);
                 }
@@ -40,12 +39,12 @@ public class Philosopher extends Thread {
         }
     }
 
-    private boolean getNeighbours(int side) {
-       return Philosophers.getNeighbours(id, side);
+    private boolean getNeighbours() {
+       return Philosophers.getNeighbours(id, justEat);
     }
 
-    private void setEat(boolean action) {
-        Philosophers.setEat(id, action);
+    private void setEat() {
+        Philosophers.setEat(id);
     }
 
     private void justEating(boolean action){
