@@ -8,6 +8,8 @@ public class Main {
         Animal[] animals = {new Cat("Барсик", 2), new Dog("Шарик", 3), new Cat("Пушок", 4)};
         for(Animal animal : animals) {
             ArrayList<Field> allFields = new ArrayList<>();
+            ArrayList<Constructor<?>> allConstructors = new ArrayList<>();
+            ArrayList<Method> allMethods = new ArrayList<>();
             Class<?> animalClass = animal.getClass();
             Collections.addAll(allFields, animalClass.getSuperclass().getDeclaredFields());
             Collections.addAll(allFields, animalClass.getDeclaredFields());
@@ -23,7 +25,27 @@ public class Main {
                 } catch (IllegalArgumentException | IllegalAccessException ignored) {
                 }
             });
+            //Получим все конструкторы
+            Collections.addAll(allConstructors, animalClass.getSuperclass().getConstructors());
+            Collections.addAll(allConstructors, animalClass.getConstructors());
+            allConstructors.forEach(constructor -> {
+                System.out.println("Конструктор: " + constructor);
+            });
             //Обработка методов классов
+            Collections.addAll(allMethods, animalClass.getSuperclass().getDeclaredMethods());
+            Collections.addAll(allMethods, animalClass.getDeclaredMethods());
+            allMethods.forEach(method -> {
+                method.setAccessible(true);
+                System.out.print("Метод класса: " + method.getName());
+                if (method.getParameterCount() > 0)
+                    System.out.print(", с параметрами " + getParameters(method.getParameters()));
+                else
+                    System.out.print(", без параметров");
+                if (method.getReturnType().toString().equals("void"))
+                    System.out.println(" -> Без возврата");
+                else 
+                    System.out.println(" -> Возвращает тип " + method.getReturnType());
+            });
             Arrays.stream(animalClass.getDeclaredMethods()).forEach(method -> {
                 if(method.getName().equals("makeSound")) {
                     try {
@@ -33,5 +55,17 @@ public class Main {
                 }
             });
         }
+    }
+
+    private static String getParameters(Parameter[] parameters) {
+        StringBuilder result = new StringBuilder();
+        result.append("(");
+        Arrays.stream(parameters).forEach(parameter -> {
+            result.append(parameter + ", ");
+        });
+        if (result.charAt(result.length() - 2) == ',')
+            result.delete(result.length() - 2, result.length());
+        result.append(")");
+        return result.toString();
     }
 }

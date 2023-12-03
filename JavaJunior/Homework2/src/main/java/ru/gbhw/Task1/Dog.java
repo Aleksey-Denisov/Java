@@ -23,4 +23,7 @@ public class Dog extends Animal {
     public String giveAPaw() {
         return "Дал лапу";
     }
+    public void test(int length, boolean result, String command){
+        
+    }
 }
