@@ -131,5 +131,4 @@ public class QueryBuilder {
             return null;
         }
     }
-
 }

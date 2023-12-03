@@ -25,11 +25,12 @@ public class Main {
             });
             //Обработка методов классов
             Arrays.stream(animalClass.getDeclaredMethods()).forEach(method -> {
-                if(method.getName().equals("makeSound"))
+                if(method.getName().equals("makeSound")) {
                     try {
                         System.out.println("Результат вызванной функции makeSound: " + method.invoke(animal));
                     } catch (IllegalAccessException | InvocationTargetException ignored) {
                     }
+                }
             });
         }
     }
