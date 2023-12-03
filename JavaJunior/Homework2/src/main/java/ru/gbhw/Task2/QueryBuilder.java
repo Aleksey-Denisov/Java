@@ -125,7 +125,6 @@ public class QueryBuilder {
                     field.getAnnotation(Column.class).primaryKey())
                     query.append(field.getAnnotation(Column.class).name())
                         .append(" = '").append(primaryKey).append("'");
-
             });
             return query.toString();
         } else {
