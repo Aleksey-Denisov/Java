@@ -43,25 +43,25 @@ public class Main {
     private static void showAllMethods(Animal animal, Class<?> animalClass) {
         ArrayList<Method> allMethods = new ArrayList<>();
         Collections.addAll(allMethods, animalClass.getSuperclass().getDeclaredMethods());
-            Collections.addAll(allMethods, animalClass.getDeclaredMethods());
-            allMethods.forEach(method -> {
-                method.setAccessible(true);
-                System.out.print("Метод класса: " + method.getName());
-                if (method.getParameterCount() > 0)
-                    System.out.print(", с параметрами " + getParameters(method.getParameters()));
-                else
-                    System.out.print(", без параметров");
-                if (method.getReturnType().toString().equals("void"))
-                    System.out.println(" -> Без возврата");
-                else 
-                    System.out.println(" -> Возвращает тип " + method.getReturnType());
-            });
-            try {
-                Method method = animalClass.getDeclaredMethod("makeSound", new Class[]{});
-                if (method != null)
-                    System.out.println("Результат вызванной функции makeSound: " + method.invoke(animal));
-            } catch (NoSuchMethodException | SecurityException | IllegalAccessException | InvocationTargetException ignored) {
-            }
+        Collections.addAll(allMethods, animalClass.getDeclaredMethods());
+        allMethods.forEach(method -> {
+            method.setAccessible(true);
+            System.out.print("Метод класса: " + method.getName());
+            if (method.getParameterCount() > 0)
+                System.out.print(", с параметрами " + getParameters(method.getParameters()));
+            else
+                System.out.print(", без параметров");
+            if (method.getReturnType().toString().equals("void"))
+                System.out.println(" -> Без возврата");
+            else 
+                System.out.println(" -> Возвращает тип " + method.getReturnType());
+        });
+        try {
+            Method method = animalClass.getDeclaredMethod("makeSound", new Class[]{});
+            if (method != null)
+                System.out.println("Результат вызванной функции makeSound: " + method.invoke(animal));
+        } catch (NoSuchMethodException | SecurityException | IllegalAccessException | InvocationTargetException ignored) {
+        }
     }
     //Функция получения параметров в методе
     private static String getParameters(Parameter[] parameters) {
