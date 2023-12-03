@@ -24,6 +24,6 @@ public class Dog extends Animal {
         return "Дал лапу";
     }
     public void test(int length, boolean result, String command){
-        
+
     }
 }

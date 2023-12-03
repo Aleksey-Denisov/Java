@@ -46,14 +46,12 @@ public class Main {
                 else 
                     System.out.println(" -> Возвращает тип " + method.getReturnType());
             });
-            Arrays.stream(animalClass.getDeclaredMethods()).forEach(method -> {
-                if(method.getName().equals("makeSound")) {
-                    try {
-                        System.out.println("Результат вызванной функции makeSound: " + method.invoke(animal));
-                    } catch (IllegalAccessException | InvocationTargetException ignored) {
-                    }
-                }
-            });
+            try {
+                Method method = animalClass.getDeclaredMethod("makeSound", new Class[]{});
+                if (method != null)
+                    System.out.println("Результат вызванной функции makeSound: " + method.invoke(animal));
+            } catch (NoSuchMethodException | SecurityException | IllegalAccessException | InvocationTargetException ignored) {
+            }
         }
     }
 
