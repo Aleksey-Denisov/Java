@@ -36,9 +36,7 @@ public class InfoClass {
         ArrayList<Constructor<?>> allConstructors = new ArrayList<>();
         Collections.addAll(allConstructors, animalClass.getSuperclass().getConstructors());
         Collections.addAll(allConstructors, animalClass.getConstructors());
-        allConstructors.forEach(constructor -> {
-            System.out.println("Конструктор: " + constructor);
-        });
+        allConstructors.forEach(constructor -> System.out.println("Конструктор: " + constructor));
     }
     //Функция получения всех методов в классе
     private void showAllMethods() {
