@@ -66,9 +66,7 @@ public class InfoClass {
     private String getParameters(Parameter[] parameters) {
         StringBuilder result = new StringBuilder();
         result.append("(");
-        Arrays.stream(parameters).forEach(parameter -> {
-            result.append(parameter + ", ");
-        });
+        Arrays.stream(parameters).forEach(parameter -> result.append(parameter + ", "));
         if (result.charAt(result.length() - 2) == ',')
             result.delete(result.length() - 2, result.length());
         result.append(")");
