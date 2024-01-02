@@ -84,5 +84,6 @@ public class Client {
                 closeConnections();
             }
         }
+        scanner.close();
     }
 }
