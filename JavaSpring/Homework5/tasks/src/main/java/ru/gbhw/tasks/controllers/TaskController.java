@@ -6,6 +6,7 @@ import ru.gbhw.tasks.module.Task;
 import ru.gbhw.tasks.module.TaskStatus;
 import ru.gbhw.tasks.service.TaskService;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -16,7 +17,8 @@ public class TaskController {
     //Получаем запрос на добавление задачи
     @PostMapping
     public Task addTask(@RequestBody Task task) {
-        return taskService.add(new Task(task));
+        task.setCreateTaskDate(LocalDateTime.now());
+        return taskService.add(task);
     }
     //Отдаем список всех задач
     @GetMapping

@@ -20,14 +20,5 @@ public class Task {
     private TaskStatus status;
     @Column(name = "creation_date", nullable = false)
     private LocalDateTime createTaskDate;
-    //Пустой конструктор, без него ругается
-    public Task() {}
-    //Конструктор принимающий такой же тип, в основном для задания времени на данный момент
-    public Task(Task task) {
-        this.shortDesc = task.getShortDesc();
-        this.description = task.getDescription();
-        this.status = task.getStatus();
-        this.createTaskDate = LocalDateTime.now();
-    }
 
 }
