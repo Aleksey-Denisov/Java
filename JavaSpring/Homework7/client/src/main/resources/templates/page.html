@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Страница с котом</title>
+</head>
+<body>
+<h1>Ниже должен быть кот</h1>
+<img th:src="'data:image/jpeg;base64,' + ${cat}"/>
+</body>
+</html>
