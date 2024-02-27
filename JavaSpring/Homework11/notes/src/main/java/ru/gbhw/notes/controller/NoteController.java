@@ -18,6 +18,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public class NoteController {
     //Сервис
     private final NoteService noteService;
+    //Переменные для отображения метрик
     private final Timer timer;
     private final Counter counter;
 
